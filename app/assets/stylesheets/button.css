@@ -1,0 +1,18 @@
+.button{
+    color: black;
+    display: inline-block;
+    border: none;
+    text-decoration: none;
+    padding: 8px 13px 7px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.button-main{
+    background-color: white;
+}
+
+.button-st{
+    background-color: #00CED1;
+}
+

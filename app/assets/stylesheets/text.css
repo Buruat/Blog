@@ -1,0 +1,34 @@
+body{
+    font-family: 'Trebuchet MS', sans-serif;
+    color: black;
+}
+
+a{
+    color: black;
+}
+
+
+.title-lg{
+    font-size: 175%;
+}
+
+.title-md{
+    font-size: 150%;
+}
+
+.title-sm{
+    font-size: 125%;
+}
+
+.text-sm{
+    font-size: 80%;
+}
+
+.main-title{
+    font-size: 200%;
+    display: flex;
+}
+
+.text-blue{
+    color: blue;
+}

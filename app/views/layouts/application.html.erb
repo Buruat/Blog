@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+<div class="wrapper">
+  <% if flash[:notice].present? %>
+    <p class="mt-sm mb-md message message-notice"><%=flash[:notice] %></p>
+  <% elsif flash[:alert].present? %>
+    <p class="mt-sm mb-md message message-alert"><%=flash[:alert] %></p>
+  <% end %>
+  <div class="navbar">
+    <p class="title-lg "><%= link_to "Блог", root_path %></p>
+    <div>
+      <% if user_signed_in? %>
+        <%= button_to "Профиль", edit_user_registration_path, method: :get, class: 'button title-sm mb-sm'%>
+        <%= button_to "Выйти", destroy_user_session_path, method: :delete, class: 'button title-sm mb-mb' %>
+      <% else %>
+        <%= button_to "Войти", new_user_session_path, method: :get, class: "button title-sm mb-sm button-in" %>
+        <%= button_to "Зарегистрироваться", new_user_registration_path,method: :get, class: "button title-sm mb-sm button-in" %>
+      <%end %>
+    </div>
+  </div>
+  <!--      <p class="notice"><%#= notice %></p>-->
+  <!--      <p class="alert"><%#= alert %></p>-->
+  <%= yield %>
+</div>
+</body>
+</html>

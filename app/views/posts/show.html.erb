@@ -1,0 +1,42 @@
+<div class="container mt-lg">
+  <h1 class="title-lg mt-md"><%= @post.title %></h1>
+  <p class="image-show">
+    <% if @post.image.attached? %>
+      <%= image_tag(@post.image, class: "image-show", height: "100")%>
+    <% end %>
+  </p>
+  <div>
+    <p class="mt-md mb-md word-wrap"><%= @post.body%></p>
+
+    <p class="post-footer"><%= "Автор: #{User.find(@post.user_id).email}" %></p>
+    <p class="mb-lg"><%= @post.created_at.strftime(('%H:%M %d-%m-%Y')) %></p>
+    <% if user_signed_in? && @current_user.id == @post.user_id%>
+      <div class="mb-sm"><%= button_to "Изменить", edit_post_path(@post), method: :get, class: "button button-main" %></div>
+      <div class="mb-md"><%= button_to "Удалить",  post_path(@post), method: :delete, class: "button button-main" %></div>
+    <%end %>
+    <div><%= button_to "Назад", :back, method: :get, class: "button button-main button-in mb-lg"%></div>
+  </div>
+</div>
+<div class="container mt-lg">
+  <h2 class="title-md">Комментарии</h2>
+  <% @post.comments.each do |comment| %>
+    <div class="container-pink mt-md">
+      <p class="title-sm mb-md">
+        <%= User.find(comment.user_id).email%>
+      </p>
+      <p>
+        <%= comment.body %>
+      </p>
+    </div>
+  <% end %>
+</div>
+<div class="container mt-lg">
+  <h2 class="title-md mt-md">Добавить комментарий</h2>
+  <%= form_with(model: [@post, @post.comments.build]) do |form| %>
+
+    <p><%= form.label :body, 'Комментарий' %></p>
+    <p> <%= form.text_area :body,rows: 5, class: 'form-text-area' %></p>
+
+    <p class="mt-md"><%= form.submit 'Сохранить', class: "button button-main"%><p>
+  <% end %>
+</div>

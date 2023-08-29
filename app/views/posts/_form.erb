@@ -1,0 +1,16 @@
+<%= form_with model:post  do |form|%>
+  <p class="mt-md"><%= form.label :title, 'Заголовок' %></p>
+  <p><%= form.text_field :title, class: 'form-text-field' %></p>
+
+  <p class="mt-sm"><%= form.label :description, 'Описание'%></p>
+  <p><%= form.text_area :description,rows: 2, class: 'form-text-area' %></p>
+
+  <p class="mt-sm"><%= form.label :body, 'Текст статьи'%></p>
+  <p><%= form.text_area :body,rows: 5, class: 'form-text-area' %></p>
+
+  <div class="mb-md">
+    <%= form.file_field :image %>
+  </div>
+
+  <%= form.submit 'Сохранить', class: "button button-main"%>
+<% end %>
