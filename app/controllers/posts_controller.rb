@@ -15,7 +15,6 @@ class PostsController < ApplicationController
     else
       @posts = Post.paginate(page: params[:page], per_page: 4)
     end
-    debugger
   end
 
 
